@@ -36,3 +36,11 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+## Create storybook for svelte
+
+```
+npx sb init
+npm run storybook //오류 발생 시, 아래 내용 주석 처리 수행 .storybook/main.cjs 파일의 svelteOptions 을 주석처리
+```
+- Demo site: https://stunning-frangipane-96eaf1.netlify.app/
