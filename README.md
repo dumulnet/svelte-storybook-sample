@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b66fa796-23c0-446c-95c8-e90f1634bdee/deploy-status)](https://app.netlify.com/sites/stunning-frangipane-96eaf1/deploys)
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
