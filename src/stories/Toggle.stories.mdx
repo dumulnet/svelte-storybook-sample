@@ -1,0 +1,169 @@
+import {Source, ArgsTable, Canvas, Meta, Story} from "@storybook/addon-docs";
+import Toggle from "./Toggle.svelte";
+import { dedent } from 'ts-dedent';
+
+<Meta title="Toggle"
+      component={Toggle}
+      argTypes={{
+        label: { control: 'text' },
+        isToggled: { control: 'boolean' },
+        backgroundColor: { control: 'color' },
+        size: {
+          control: { type: "select", options: ["small", "medium", "large"] },
+        },
+        onClick: { action: 'onClick' },
+        }} 
+/>
+
+export let isToggled = false
+
+export const Template = (args) => ({
+    Component: Toggle,
+    props: args,
+    on: {
+    click: args.onClick,
+    },
+});
+
+# Toggle
+
+---
+## Usage
+
+<Source language='html' code={dedent`
+  <script>
+    import Toggle from "../common/Toggle.svelte";
+    let isToggled;
+  </script>
+
+  <Toggle bind:isToggled />
+  
+  Toggled? {isToggled.toString()}
+`}
+/>
+
+<Canvas>
+  <Story   
+    name="Basic"
+    args={{
+      isToggled: isToggled,
+      size: 'medium',
+      label: 'Basic',
+    }}>
+    {Template.bind({})}
+  </Story>
+  Toggled? {isToggled.toString()}
+</Canvas>
+
+
+---
+## Basic
+
+<Source code='<Toggle isToggled={boolean} label={string} size={small|medium|large} on:click={function}/>'/>
+
+---
+## On/Off
+
+<Canvas columns={2} withToolbar>
+  <Story   
+    name="LabeledOff"
+    args={{
+      isToggled: false,
+      size: 'medium',
+      label: 'Switch Off',
+    }}>
+    {Template.bind({})}
+  </Story>
+  <Story  
+    name="LabeledOn"
+    args={{
+      isToggled: true,
+      size: 'medium',
+      label: 'Switch On',
+    }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+---
+## Labeled/Blank
+
+<Canvas columns={2} withToolbar>
+  <Story   
+    name="Labeled"
+    args={{
+      isToggled: false,
+      size: 'medium',
+      label: 'Labeled',
+    }}>
+    {Template.bind({})}
+  </Story>
+  <Story  
+    name="Blank"
+    args={{
+      isToggled: false,
+      size: 'medium',
+      label: '',
+    }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+---
+## Size 
+
+<Canvas columns={3} withToolbar>
+  <Story   
+    name="LabeledSmall"
+    args={{
+      isToggled: false,
+      size: 'small',
+      label: 'Size small',
+    }}>
+    {Template.bind({})}
+  </Story>
+  <Story   
+    name="LabeledMedium"
+    args={{
+      isToggled: false,
+      size: 'medium',
+      label: 'Size medium',
+    }}>
+    {Template.bind({})}
+  </Story>
+  <Story   
+    name="LabeledLarge"
+    args={{
+      isToggled: false,
+      size: 'large',
+      label: 'Size large',
+    }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+---
+## Enabled/Disabled
+
+<Canvas columns={2}  withSource="open" withToolbar>
+  <Story 
+    name="LabeledNormal"
+    args={{
+      isToggled: false,
+      label: 'Enabled',
+    }}>
+    {Template.bind({})}
+  </Story>
+  <Story 
+    name="LabeledDisabled"
+    args={{
+      isToggled: false,
+      disabled: true,
+     label: 'Disabled',
+  }}>  
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={Toggle} />
+
